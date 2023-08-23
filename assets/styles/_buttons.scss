@@ -1,0 +1,95 @@
+.btn {
+  display: inline-block;
+  padding: 1em 2em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: all $transition-time;
+  overflow: hidden;
+  position: relative;
+  z-index: 1; // Asegura que el contenido del botón esté encima
+  text-transform: uppercase;
+  border-radius: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%; // Comienza desde la parte inferior
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    transition: all $transition-time;
+    z-index: -1;
+  }
+
+  &:hover:before {
+    bottom: 0; // Termina en la parte superior
+  }
+
+  &.btn-primary {
+    background-color: $primary-color;
+    color: white;
+    border: 2px solid transparent; // Agregado un borde transparente
+    &:hover {
+      color: $primary-color;
+      background-color: transparent;
+      border: 2px solid $primary-color;
+    }
+
+    &:active {
+      color: white;
+      background-color: darken($primary-color, 20%);
+      border-color: darken($primary-color, 25%);
+      transform: scale(
+        0.95
+      ); // Hace que el botón se comprima ligeramente al hacer clic
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $secondary-color;
+    color: white;
+    border: 2px solid transparent; // Agregado un borde transparente
+    &:hover {
+      color: $secondary-color;
+      background-color: transparent;
+      border: 2px solid $secondary-color;
+    }
+  }
+
+  &.btn-outline-primary {
+    background-color: transparent;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  &.btn-outline-secondary {
+    background-color: transparent;
+    color: $secondary-color;
+    border: 2px solid $secondary-color;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: white;
+    }
+  }
+}
+
+@keyframes hvr-bob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
